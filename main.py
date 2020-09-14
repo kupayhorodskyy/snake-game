@@ -21,7 +21,7 @@ apple_x = random.randint(0, 780)
 apple_y = random.randint(0, 580)
 
 snake_color = (0, 117, 14)
-xChange = 0
+xChange = 20
 yChange = 0
 
 
@@ -48,7 +48,7 @@ def check_collisions():
     while i < len(snake):
         if snake[0][0] == snake[i][0] and snake[0][1] == snake[i][1]:
             return True
-        elif snake[0][0] >= 780 or snake[0][0] <= 0 or snake[0][1] <= 0 or snake[0][1] >= 580:
+        elif snake[0][0] >= 800 or snake[0][0] <= 0 or snake[0][1] <= 0 or snake[0][1] >= 600 :
             return True
         i += 1
     return False
