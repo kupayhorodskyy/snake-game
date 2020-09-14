@@ -5,7 +5,6 @@ import math
 pygame.init()
 pygame.display.set_caption("Snake")
 
-
 clock = pygame.time.Clock()
 
 screen = pygame.display.set_mode((800, 600))
@@ -45,10 +44,10 @@ def move_snake():
 # Check for collisions with walls or self
 def check_collisions():
     i = 1
+    if snake[0][0] >= 800 or snake[0][0] <= 0 or snake[0][1] <= 0 or snake[0][1] >= 600:
+        return True
     while i < len(snake):
         if snake[0][0] == snake[i][0] and snake[0][1] == snake[i][1]:
-            return True
-        elif snake[0][0] >= 800 or snake[0][0] <= 0 or snake[0][1] <= 0 or snake[0][1] >= 600 :
             return True
         i += 1
     return False
