@@ -70,29 +70,35 @@ def grow_snake():
 
 # Main game loop
 running = True
+
+# variable to prevent two keys being pressed at the same time
+key_pressed = False
 while running:
     clock.tick(20)
     screen.fill((0, 0, 0))
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
-                if yChange == 0:
-                    xChange = 0
-                    yChange = -20
-            elif event.key == pygame.K_DOWN:
-                if yChange == 0:
-                    xChange = 0
-                    yChange = 20
-            elif event.key == pygame.K_LEFT:
-                if xChange == 0:
-                    yChange = 0
-                    xChange = -20
-            elif event.key == pygame.K_RIGHT:
-                if xChange == 0:
-                    yChange = 0
-                    xChange = 20
+            if not key_pressed:
+                key_pressed = True
+                if event.key == pygame.K_UP:
+                    if yChange == 0:
+                        xChange = 0
+                        yChange = -20
+                elif event.key == pygame.K_DOWN:
+                    if yChange == 0:
+                        xChange = 0
+                        yChange = 20
+                elif event.key == pygame.K_LEFT:
+                    if xChange == 0:
+                        yChange = 0
+                        xChange = -20
+                elif event.key == pygame.K_RIGHT:
+                    if xChange == 0:
+                        yChange = 0
+                        xChange = 20
         elif event.type == pygame.QUIT:
             running = False
+    key_pressed = False
 
     if xChange != 0 or yChange != 0:
         move_snake()
